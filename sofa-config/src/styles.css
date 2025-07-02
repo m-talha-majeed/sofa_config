@@ -1,0 +1,454 @@
+/* Config Toggle Button */
+.config-toggle-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.config-toggle-button:hover {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.config-icon {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Configuration Overlay */
+.config-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  width: 350px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.overlay-header {
+  background: #b71c1c;
+  color: #fff;
+  padding: 16px 24px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay-header h2 {
+  color: #fff;
+  margin: 0;
+}
+
+.overlay-header .close-button {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.overlay-header .close-button:hover {
+  color: #ffebee;
+}
+
+.overlay-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.model-list {
+  background: #fff;
+  border: 2px solid #b71c1c;
+  border-radius: 10px;
+  padding: 16px 20px;
+  color: #b71c1c;
+  margin-top: 12px;
+}
+
+.model-list h3 {
+  color: #b71c1c;
+  margin-top: 0;
+}
+
+.model-item {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid transparent;
+}
+
+.model-item.selected {
+  background: #b71c1c;
+  color: #fff;
+  border: 1px solid #b71c1c;
+}
+
+.model-item .delete-button {
+  background: transparent;
+  color: #b71c1c;
+  border: none;
+  font-size: 1.2em;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.model-item.selected .delete-button {
+  color: #fff;
+}
+
+.model-item .delete-button:hover {
+  color: #d32f2f;
+}
+
+.model-selector {
+  margin-bottom: 16px;
+  margin-top: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.model-selector button {
+  border: 2px solid #b71c1c;
+  background: transparent;
+  color: #b71c1c;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.model-selector button:hover {
+  color: #fff;
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+.model-selector .button-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Standalone model selector button for use outside .model-selector */
+.model-selector-button {
+  border: 2px solid #b71c1c;
+  background: transparent;
+  color: #b71c1c;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.model-selector-button:hover {
+  color: #fff;
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+/* Make sure the scene container is positioned relatively */
+.scene-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.control-group {
+  margin-bottom: 10px;
+}
+
+.control-group h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.color-picker {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.color-option {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  margin: 0;
+  display: inline-block;
+}
+
+.color-option.selected {
+  border: 2px solid #4a6fa5;
+  box-shadow: 0 0 0 2px #bcd0ee;
+}
+
+.color-picker input[type='color'] {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #bcd0ee;
+  box-shadow: 0 0 0 2px #fff, 0 2px 8px rgba(183,28,28,0.15);
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.color-picker input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 50%;
+}
+
+.color-picker input[type='color']::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.color-picker input[type='color']:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #b71c1c, 0 2px 8px rgba(183,28,28,0.15);
+}
+
+.background-color-group {
+  padding: 16px 18px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.config-panel {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 16px 20px;
+  color: #b71c1c;
+  border: 2px solid #b71c1c;
+  max-width: 340px;
+}
+
+.config-panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.config-panel h3 {
+  color: #b71c1c;
+  margin: 10px 0 6px 0;
+  font-size: 1.05em;
+}
+
+.control-group select {
+  width: 120px;
+  padding: 6px 32px 6px 12px;
+  border: 2px solid #b71c1c;
+  border-radius: 6px;
+  background: #fff;
+  color: #b71c1c;
+  font-size: 1em;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(183,28,28,0.05);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23b71c1c" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 20px 20px;
+}
+
+.control-group select:focus {
+  border: 2px solid #d32f2f;
+  box-shadow: 0 0 0 2px #ffebee;
+}
+
+.control-group option {
+  color: #b71c1c;
+  background: #fff;
+}
+
+/* Button style for config panel */
+.config-panel-button {
+  border: 2px solid #b71c1c;
+  background: #fff;
+  color: #b71c1c;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  box-shadow: 0 1px 4px rgba(183,28,28,0.05);
+}
+
+.config-panel-button:hover {
+  color: #fff;
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+/* Add more styling as needed for buttons, etc. */
+
+/* Material config bar styles */
+.material-config-bar {
+  position: fixed;
+  left: 32px; /* left margin */
+  right: 370px; /* config panel width (350px) + 20px gap */
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+.material-config-card {
+  background: #fff;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.15);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 20px 36px;
+  margin: 24px 0 24px 0;
+  width: 100%;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #b71c1c;
+  color: #b71c1c;
+}
+
+.material-config-card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #b71c1c;
+}
+
+.material-config-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.material-config-card label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  font-weight: 500;
+  color: #b71c1c;
+  margin-bottom: 0;
+  gap: 4px;
+}
+
+.material-config-card input[type='number'],
+.material-config-card input[type='color'] {
+  padding: 6px 10px;
+  border: 2px solid #b71c1c;
+  border-radius: 6px;
+  background: #fff;
+  color: #b71c1c;
+  font-size: 1em;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(183,28,28,0.05);
+}
+
+.material-config-card input[type='number']:focus,
+.material-config-card input[type='color']:focus {
+  border: 2px solid #d32f2f;
+  box-shadow: 0 0 0 2px #ffebee;
+}
+
+.material-config-card button {
+  border: 2px solid #b71c1c;
+  background: #fff;
+  color: #b71c1c;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  box-shadow: 0 1px 4px rgba(183,28,28,0.05);
+}
+
+.material-config-card button:hover {
+  color: #fff;
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+.material-config-card.slimmer {
+  padding: 10px 16px;
+  margin: 12px 0 12px 0;
+  min-height: unset;
+}
+
+.material-config-card input[type='color'] {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
